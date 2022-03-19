@@ -1,5 +1,7 @@
 {
   "current": {
+    "colors_solid_button_labels": "#ffffff",
+    "buttons_border_opacity": 100,
     "card_style": "standard",
     "sections": {
       "announcement-bar": {
@@ -8,7 +10,7 @@
           "announcement-bar-0": {
             "type": "announcement",
             "settings": {
-              "text": "Welcome to our store",
+              "text": "WE LOVE ROBOTICS!",
               "color_scheme": "background-1",
               "link": ""
             }
@@ -24,7 +26,8 @@
         "type": "header",
         "settings": {
           "color_scheme": "background-1",
-          "logo_width": 90,
+          "logo": "shopify:\/\/shop_images\/Canada-Robotix-Logo-with-Robot_360x_51ce58fa-2aea-492e-b011-1f16253717aa.webp",
+          "logo_width": 250,
           "logo_position": "middle-left",
           "menu": "main-menu",
           "show_line_separator": true,
@@ -35,8 +38,16 @@
       "footer": {
         "type": "footer",
         "blocks": {
+          "footer-2": {
+            "type": "text",
+            "settings": {
+              "heading": "Canada Robotix",
+              "subtext": "<p>Canada Robotix is your source for Raspberry Pi, Arduino, Adafruit, SparkFun, Pololu, and alot more. We are here to make your DIY electronics and robotics project possible. We Love Robotics!<\/p>"
+            }
+          },
           "footer-0": {
             "type": "link_list",
+            "disabled": true,
             "settings": {
               "heading": "Quick links",
               "menu": "footer"
@@ -45,22 +56,15 @@
           "footer-1": {
             "type": "link_list",
             "settings": {
-              "heading": "Info",
+              "heading": "Information",
               "menu": "footer"
-            }
-          },
-          "footer-2": {
-            "type": "text",
-            "settings": {
-              "heading": "Our mission",
-              "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
             }
           }
         },
         "block_order": [
+          "footer-2",
           "footer-0",
-          "footer-1",
-          "footer-2"
+          "footer-1"
         ],
         "settings": {
           "color_scheme": "background-1",
