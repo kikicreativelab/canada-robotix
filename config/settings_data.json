@@ -1,8 +1,15 @@
 {
   "current": {
     "colors_solid_button_labels": "#ffffff",
+    "colors_accent_1": "#fa801e",
+    "colors_accent_2": "#e22120",
+    "colors_text": "#121212",
+    "colors_background_1": "#ffffff",
     "buttons_border_opacity": 100,
     "card_style": "standard",
+    "badge_corner_radius": 2,
+    "sale_badge_color_scheme": "accent-2",
+    "sold_out_badge_color_scheme": "inverse",
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
