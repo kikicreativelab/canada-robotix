@@ -48,7 +48,18 @@
         {{ money_price }}
       </span>
     </div>
-    <div class="price__sale">
+    <div class="price__sale">  
+      <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.sale_price' | t }}</span>
+      <span class="price-item price-item--sale price-item--last" style="border-style: solid; color: red; padding:3px;"> <!-- added a border with box -->
+        {{ money_price }}
+      </span>
+      <!-- added a save percentage logic which rounds to the nearest percentage -->
+      {% if product.compare_at_price > product.price %}
+        <span class="price-item price-item--sale price-item--last" style="color: red;">
+          SAVE {{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}%
+        </span>
+      {% endif %}
+      <br>
       {%- unless product.price_varies == false and product.compare_at_price_varies %}
         <span class="visually-hidden visually-hidden--inline ">{{ 'products.product.price.regular_price' | t }}</span>
         <span>
@@ -61,10 +72,6 @@
           </s>
         </span>
       {%- endunless -%}
-      <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.sale_price' | t }}</span>
-      <span class="price-item price-item--sale price-item--last" style="border-style: solid; color: red; padding:5px;">
-        {{ money_price }}
-      </span>
     </div>
     <small class="unit-price caption{% if product.selected_or_first_available_variant.unit_price_measurement == nil %} hidden{% endif %}">
       <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
