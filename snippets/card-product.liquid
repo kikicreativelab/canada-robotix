@@ -16,6 +16,20 @@
 
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 
+<!-- Custom tags -->
+{% assign archived = true %}
+{% assign mpn = null %}
+{% assign bin = null %}
+{% for tag in card_product.tags %}
+  {% if tag contains 'active' %}
+    {% assign archived = false %}
+  {% elsif tag contains 'mpn_' %}
+  	{% assign mpn = tag | split: '_' | last %}
+  {% elsif tag contains 'bin_' %}
+  	{% assign bin = tag | split: '_' | last %}
+  {% endif %}
+{% endfor %}
+
 {%- if card_product and card_product != empty -%}
   {%- liquid
     assign ratio = 1
@@ -89,7 +103,7 @@
           </div>
           <div class="card__badge {{ settings.badge_position }}">
             {%- if card_product.available == false -%}                                                                   <!-- Use this code and replace it with "Backordered" to show sold out instead -->
-              <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">Backordered</span> <!-- {{ 'products.product.sold_out' | t }}-->
+              <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">{{ 'products.product.sold_out' | t }}</span> <!-- {{ 'products.product.sold_out' | t }}-->
             {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
               <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">{{ 'products.product.on_sale' | t }}</span>
             {%- endif -%}
@@ -101,7 +115,17 @@
           <h3 class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}">
             <a href="{{ card_product.url | default: '#' }}" class="full-unstyled-link">
               {{ card_product.title | escape }} <br/>
-              SKU: {{ card_product.variants[0].sku | escape }}
+              {%- if card_product.variants[0].sku != null -%}
+                SKU: {{ card_product.variants[0].sku | escape }}
+                </br>
+              {%- endif-%}
+              {%- if mpn != null -%}
+                MPN: {{ mpn }}
+                </br>
+              {%- endif -%}
+              {%- if bin != null -%}
+                BIN: {{ bin }}
+              {%- endif -%}
             </a>
           </h3>
           <div class="card-information">

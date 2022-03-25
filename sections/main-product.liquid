@@ -23,6 +23,20 @@
   }
 {%- endstyle -%}
 
+<!-- Custom tags -->
+{% assign archived = true %}
+{% assign mpn = null %}
+{% assign bin = null %}
+{% for tag in product.tags %}
+  {% if tag contains 'active' %}
+    {% assign archived = false %}
+  {% elsif tag contains 'mpn_' %}
+  	{% assign mpn = tag | split: '_' | last %}
+  {% elsif tag contains 'bin_' %}
+  	{% assign bin = tag | split: '_' | last %}
+  {% endif %}
+{% endfor %}
+
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
 {%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
@@ -200,6 +214,19 @@
             <h1 class="product__title" {{ block.shopify_attributes }}>
               {{ product.title | escape }}
             </h1>
+            <h2>
+              {%- if product.variants[0].sku != null -%}
+                SKU: {{ product.variants[0].sku | escape }}
+                </br>
+              {%- endif-%}
+              {%- if mpn != null -%}
+                MPN: {{ mpn }}
+                </br>
+              {%- endif -%}
+              {%- if bin != null -%}
+                BIN: {{ bin }}
+              {%- endif -%}
+            </h2>
           {%- when 'price' -%}
             <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
               {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}

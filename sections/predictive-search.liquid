@@ -29,7 +29,12 @@
               {%- if settings.predictive_search_show_price -%}
                 {% render 'price', product: product, use_variant: true, show_badges: false %} 
               {%- endif -%}
-              <p>SKU: {{ product.variants[0].sku }}</p>
+              <p>
+                {%- if product.variants[0].sku != null -%}
+                  SKU: {{ product.variants[0].sku | escape }}
+                  </br>
+                {%- endif-%}
+              </p>
             </div>
           </a>
         </li>
@@ -59,4 +64,4 @@
 {%- endif -%}
 
 <!-- For console logging product data as json -->
-<!-- <script>console.log({{ product | json }});</script> --> 
+<!-- <script>console.log({{ product.variants[0] | json }});</script>  -->
