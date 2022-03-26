@@ -18,7 +18,7 @@
             "type": "announcement",
             "settings": {
               "text": "WE LOVE ROBOTICS!",
-              "color_scheme": "background-1",
+              "color_scheme": "inverse",
               "link": ""
             }
           }
