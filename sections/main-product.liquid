@@ -24,18 +24,18 @@
 {%- endstyle -%}
 
 <!-- Custom tags -->
-{% assign archived = true %}
-{% assign mpn = null %}
-{% assign bin = null %}
 {% for tag in product.tags %}
   {% if tag contains 'active' %}
     {% assign archived = false %}
+  {% elsif tag contains 'backordered' %}
+    {% assign backordered = 'Backordered' %}
   {% elsif tag contains 'mpn_' %}
   	{% assign mpn = tag | split: '_' | last %}
   {% elsif tag contains 'bin_' %}
   	{% assign bin = tag | split: '_' | last %}
   {% endif %}
 {% endfor %}
+
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
@@ -230,6 +230,9 @@
           {%- when 'price' -%}
             <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
               {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
+              {%- if backordered != null -%}
+                <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}" style="opacity:60%;">{{backordered}}</span>
+              {%- endif -%}
             </div>
             {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
               <div class="product__tax caption rte">
