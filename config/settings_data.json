@@ -5,6 +5,7 @@
     "colors_accent_2": "#e22120",
     "colors_text": "#121212",
     "colors_background_1": "#ffffff",
+    "spacing_sections": 0,
     "buttons_border_opacity": 100,
     "card_style": "standard",
     "badge_corner_radius": 2,
@@ -74,7 +75,7 @@
           "footer-1"
         ],
         "settings": {
-          "color_scheme": "background-1",
+          "color_scheme": "accent-1",
           "newsletter_enable": true,
           "newsletter_heading": "Subscribe to our emails",
           "show_social": true,
