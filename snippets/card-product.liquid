@@ -24,6 +24,8 @@
 {% for tag in card_product.tags %}
   {% if tag contains 'active' %}
     {% assign archived = false %}
+  {% elsif tag contains 'backordered' %}
+    {% assign backordered = 'Backordered' %}
   {% elsif tag contains 'mpn_' %}
   	{% assign mpn = tag | split: '_' | last %}
   {% elsif tag contains 'bin_' %}
@@ -108,7 +110,7 @@
             {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
               <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">{{ 'products.product.on_sale' | t }}</span>
             {%- elsif backordered != null -%}
-              <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}" style="opacity:90%;">Backordered</span>
+              <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}" style="opacity:60%;">{{backordered}}</span>
             {%- endif -%}
           </div>
         </div>
@@ -170,7 +172,7 @@
           {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
             <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">{{ 'products.product.on_sale' | t }}</span>
           {%- elsif backordered != null -%}
-            <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}" style="opacity:90%;">Backordered</span>
+            <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}" style="opacity:60%;">{{backordered}}</span>
           {%- endif -%}
         </div>
       </div>
