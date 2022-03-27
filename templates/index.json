@@ -121,6 +121,77 @@
         "padding_bottom": 0
       }
     },
+    "164839279370f98bf9": {
+      "type": "featured-product",
+      "blocks": {
+        "164839279341dceb73-0": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "164839279341dceb73-1": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "164839279341dceb73-2": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "164839279341dceb73-3": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "164839279341dceb73-4": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "164839279341dceb73-5": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "164839279341dceb73-6": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "164839279341dceb73-7": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "164839279341dceb73-0",
+        "164839279341dceb73-1",
+        "164839279341dceb73-2",
+        "164839279341dceb73-3",
+        "164839279341dceb73-4",
+        "164839279341dceb73-5",
+        "164839279341dceb73-6",
+        "164839279341dceb73-7"
+      ],
+      "settings": {
+        "product": "2524",
+        "color_scheme": "background-1",
+        "secondary_background": false,
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -262,6 +333,7 @@
   "order": [
     "1647594656fd7fa0c6",
     "rich_text",
+    "164839279370f98bf9",
     "featured_collection",
     "collage",
     "multicolumn",
