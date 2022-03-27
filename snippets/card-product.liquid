@@ -18,6 +18,7 @@
 
 <!-- Custom tags -->
 {% assign archived = true %}
+{% assign backordered = null %}
 {% assign mpn = null %}
 {% assign bin = null %}
 {% for tag in card_product.tags %}
@@ -106,6 +107,8 @@
               <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">{{ 'products.product.sold_out' | t }}</span> <!-- {{ 'products.product.sold_out' | t }}-->
             {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
               <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">{{ 'products.product.on_sale' | t }}</span>
+            {%- elsif backordered != null -%}
+              <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}" style="opacity:90%;">Backordered</span>
             {%- endif -%}
           </div>
         </div>
@@ -163,9 +166,11 @@
         </div>
         <div class="card__badge {{ settings.badge_position }}">
           {%- if card_product.available == false -%}                                                                   <!-- Use this code and replace it with "Backordered" to show sold out instead -->
-            <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">Backordered</span> <!--{{ 'products.product.sold_out' | t }} -->
+            <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">{{ 'products.product.sold_out' | t }}</span> <!--{{ 'products.product.sold_out' | t }} -->
           {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
             <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">{{ 'products.product.on_sale' | t }}</span>
+          {%- elsif backordered != null -%}
+            <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}" style="opacity:90%;">Backordered</span>
           {%- endif -%}
         </div>
       </div>
