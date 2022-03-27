@@ -19,7 +19,7 @@
             "type": "announcement",
             "settings": {
               "text": "WE LOVE ROBOTICS!",
-              "color_scheme": "accent-2",
+              "color_scheme": "accent-1",
               "link": ""
             }
           }
