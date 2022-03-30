@@ -30,6 +30,19 @@
   endif
 -%}
 
+<!-- Custom tags -->
+{% for tag in product.tags %}
+  {% if tag contains 'active' %}
+    {% assign archived = false %}
+  {% elsif tag contains 'backordered' %}
+    {% assign backordered = 'Backordered' %}
+  {% elsif tag contains 'mpn_' %}
+  	{% assign mpn = tag | split: '_' | last %}
+  {% elsif tag contains 'bin_' %}
+  	{% assign bin = tag | split: '_' | last %}
+  {% endif %}
+{% endfor %}
+
 <div class="price
   {%- if price_class %} {{ price_class }}{% endif -%}
   {%- if available == false %} price--sold-out {% endif -%}
@@ -45,7 +58,9 @@
     <div class="price__regular">
       <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
       <span class="price-item price-item--regular">
+        {%- if archived == false -%}
         {{ money_price }}
+        {%- endif -%}
       </span>
     </div>
     <div class="price__sale">  
