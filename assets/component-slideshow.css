@@ -105,7 +105,9 @@ slideshow-component.page-width .slideshow__text {
 }
 
 .slideshow__controls {
-  border: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  /* border: 0.1rem solid rgba(var(--color-foreground), 0.08); */
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 2px -2px;
 }
 
 @media screen and (max-width: 749px) {
